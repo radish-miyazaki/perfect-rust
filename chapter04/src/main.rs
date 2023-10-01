@@ -1,11 +1,8 @@
 mod floating_type;
 mod integer_type;
+mod boolean_type;
 
 fn main() {
-    // integer_type::integer_literal();
-    // integer_type::byte_literal();
-    // integer_type::i32_contant();
-    // integer_type::methods();
-
-    floating_type::floating_literal();
+    println!("{}", boolean_type::method(30));
 }
+
