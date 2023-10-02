@@ -1,4 +1,5 @@
-#[allow(dead_code)]
+#![allow(dead_code)]
+
 pub fn is_adult(age: i32) -> bool {
     println!("age = {}", age);
 
