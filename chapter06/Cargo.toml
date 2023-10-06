@@ -1,0 +1,9 @@
+[package]
+name = "chapter06"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.31"
+chrono-tz = "0.8.3"
+lazy_static = "1.4.0"
