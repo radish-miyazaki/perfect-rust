@@ -5,5 +5,6 @@ mod ownership;
 mod reference;
 mod life_time;
 mod option_type;
+mod result_type;
 
 fn main() {}
