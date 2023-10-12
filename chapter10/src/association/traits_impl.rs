@@ -14,14 +14,10 @@ pub struct CsvReaderImpl<T>{
     phantom: PhantomData<T>
 }
 
-impl<T> CsvReaderImpl<T> {
-    pub fn new() -> Self {
-        Self { phantom: PhantomData }
-    }
-}
+impl<T> CsvReader for CsvReaderImpl<T> where T: DeserializeOwned {
+    type Entity = T;
 
-impl<T> CsvReader<T> for CsvReaderImpl<T> where T: DeserializeOwned {
-    fn read(&self, file_path: &str) -> Result<Vec<T>> {
+    fn read(&self, file_path: &str) -> Result<Vec<Self::Entity>> {
         let path_buf = PathBuf::from(file_path);
         let string_data = read_to_string(path_buf)?;
 
@@ -42,14 +38,10 @@ pub struct JsonReaderImpl<T>{
     phantom: PhantomData<T>
 }
 
-impl<T> JsonReaderImpl<T> {
-    pub fn new() -> Self {
-        Self { phantom: PhantomData }
-    }
-}
+impl<T> JsonReader for JsonReaderImpl<T> where T: DeserializeOwned {
+    type Entity = T;
 
-impl<T> JsonReader<T> for JsonReaderImpl<T> where T: DeserializeOwned {
-    fn read(&self, file_path: &str) -> Result<Vec<T>> {
+    fn read(&self, file_path: &str) -> Result<Vec<Self::Entity>> {
         let path_buf = PathBuf::from(file_path);
 
         let buf_reader = File::open(path_buf).map(|f| BufReader::new(f))?;
