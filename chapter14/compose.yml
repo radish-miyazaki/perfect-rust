@@ -1,0 +1,17 @@
+services:
+  database:
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+      target: 'database'
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_USER: product-admin
+      POSTGRES_DB: product
+    restart: always
+volumes:
+  db-data:
