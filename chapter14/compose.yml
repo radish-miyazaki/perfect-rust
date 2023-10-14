@@ -9,8 +9,8 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: p@ssw0rd
-      POSTGRES_USER: product-admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
       POSTGRES_DB: product
     restart: always
 volumes:
