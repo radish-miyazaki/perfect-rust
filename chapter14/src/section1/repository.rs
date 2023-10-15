@@ -5,19 +5,19 @@ pub trait Repository<T, PK, UPD> {
         todo!()
     }
 
-    fn select_by_id(&mut self, id: PK) -> Result<Option<T>> {
+    fn select_by_id(&mut self, _id: PK) -> Result<T> {
         todo!()
     }
 
-    fn insert(&mut self, row: T) -> Result<UPD> {
+    fn insert(&mut self, _row: T) -> Result<UPD> {
         todo!()
     }
 
-    fn update_by_id(&mut self, id: PK) -> Result<UPD> {
+    fn update_by_id(&mut self, _id: PK) -> Result<UPD> {
         todo!()
     }
 
-    fn delete_by_id(&mut self, id: PK) -> Result<UPD> {
+    fn delete_by_id(&mut self, _id: PK) -> Result<UPD> {
         todo!()
     }
 }

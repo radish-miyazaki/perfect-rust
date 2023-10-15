@@ -2,16 +2,16 @@ use lombok::*;
 
 #[derive(Getter, GetterMut, Setter, NoArgsConstructor, AllArgsConstructor, ToString, Clone)]
 pub struct ProductCategory {
-    id: i32,
+    id: i64,
     name: String,
-    products: Option<Product>
+    products: Option<Vec<Product>>
 }
 
 #[derive(Getter, GetterMut, Setter, NoArgsConstructor, AllArgsConstructor, ToString, Clone)]
 pub struct Product {
-    id: i32,
+    id: i64,
     name: String,
     price: i32,
-    category_id: i32,
+    category_id: i64,
     category: Option<ProductCategory>
 }

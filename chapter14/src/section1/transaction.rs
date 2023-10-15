@@ -14,6 +14,7 @@ impl TransactionUtil {
         Ok(())
     }
 
+    #[allow(dead_code)]
     pub fn rollback(tx: Transaction) -> Result<()> {
         tx.rollback()?;
         Ok(())
