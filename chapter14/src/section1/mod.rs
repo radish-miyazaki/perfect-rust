@@ -1,6 +1,6 @@
-mod params;
+pub mod params;
 mod connect;
-mod transaction;
+pub mod transaction;
 mod entity;
-mod repository;
-mod product_repository;
+pub mod repository;
+pub mod product_repository;
