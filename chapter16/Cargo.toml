@@ -1,0 +1,20 @@
+[package]
+name = "chapter16"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sea-orm = { version = "0.12.3", default-features = false, features = ["sqlx-postgres", "runtime-tokio-rustls", "macros"]}
+tokio = { version = "1.33.0", features = ["full"] }
+serde = { version = "1.0.189", features = ["derive"] }
+serde_json = { version = "1.0.107", default-features = false, features = ["alloc"] }
+proc-macro2 = "1.0.69"
+lombok = "0.4.0"
+async-trait = "0.1.74"
+anyhow = "1.0.75"
+dotenv = "0.15.0"
+chrono = "0.4.31"
+log = "0.4.20"
+env_logger = "0.10.0"
