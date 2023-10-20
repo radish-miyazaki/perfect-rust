@@ -1,0 +1,20 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}Simple Calculation{%endblock title %}
+
+{% block content %}
+<br />
+<form class="row flex gap-3" action="/tera" method="post">
+    <input type="number" class="form-control" name="value1" value="0" />
+    <select class="form-select" name="opt">
+        <option value="1" selected>+</option>
+        <option value="2">-</option>
+        <option value="3">*</option>
+        <option value="4">/</option>
+        <option value="5">%</option>
+    </select>
+    <input type="number" class="form-control" name="value2" value="0" />
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+{% endblock content %}

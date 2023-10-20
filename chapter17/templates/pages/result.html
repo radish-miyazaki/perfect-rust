@@ -1,0 +1,18 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}Simple Calculation{% endblock title %}
+
+{% block content %}
+<br />
+<div class="row justify-content-md-center">
+    <div class="col-md-auto">
+        <h3>Result: {{result}}</h3>
+        {% if error %}}
+        <h3>Error: {{error}}</h3>
+        {% endif %}
+        <form action="/tera" method="get">
+            <button type="submit" class="btn btn-primary">Back</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
