@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 use std::thread::current;
+use crossbeam::sync::WaitGroup;
 use crossbeam::thread;
 
 pub struct Summary;
@@ -41,6 +42,38 @@ impl Summary {
             println!("total: {}", total)
         }).unwrap();
     }
+
+    pub fn use_wait_group(&self) {
+        thread::scope(|scope| {
+            let mut handles = Vec::with_capacity(3);
+            let wait_group = WaitGroup::new();
+            let mut num = 0;
+
+            while num <= 2 {
+                let wg = wait_group.clone();
+                handles.push(
+                    scope.builder()
+                        .name(format!("summary{}", num))
+                        .stack_size(1024 * 3)
+                        .spawn(move |_| {
+                            let result = self.summary(
+                                current().name().unwrap(),
+                                vec![10+num, 20+num, 30+num, 40+num, 50+num]);
+                            drop(wg);
+                            result
+                        }).unwrap_or_else(|err| panic!("{:?}", err)));
+
+                num += 1;
+            }
+            wait_group.wait();
+
+            for handle in handles {
+                let thread = handle.thread().clone();
+                let result = handle.join().unwrap_or_else(|err| panic!("{:?}", err));
+                println!("{} sum: {}", thread.name().unwrap(), result);
+            }
+        }).unwrap();
+    }
 }
 
 pub fn thread_controller_1() {
@@ -51,6 +84,11 @@ pub fn thread_controller_1() {
 pub fn thread_controller_2() {
     let s = Summary;
     s.use_builder();
+}
+
+pub fn thread_controller_3() {
+    let s = Summary;
+    s.use_wait_group();
 }
 
 #[cfg(test)]
@@ -65,6 +103,11 @@ mod tests {
     #[test]
     pub fn thread_controller_2_test() {
         thread_controller_2();
+    }
+
+    #[test]
+    pub fn thread_controller_3_test() {
+        thread_controller_3();
     }
 }
 
