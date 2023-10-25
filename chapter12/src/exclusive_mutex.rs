@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::ops::Div;
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -26,17 +28,14 @@ impl Calculator {
 
     fn calc_avg(params: Arc<Mutex<Vec<u64>>>) -> u64 {
         let mut avg = 0;
-        let mut count = 0;
 
-        {
-            let values = params.lock().unwrap_or_else(|err| panic!("{:?}", err));
-            println!("calc_avg: {:?}", params);
-            count = values.iter().count() as u64;
-            for value in values.iter() {
-                avg = avg + value;
-                thread::sleep(Duration::from_secs(1));
-                println!("{} value: {}", thread::current().name().unwrap(), avg);
-            }
+        let values = params.lock().unwrap_or_else(|err| panic!("{:?}", err));
+        println!("calc_avg: {:?}", params);
+        let count: u64 = values.iter().count() as u64;
+        for value in values.iter() {
+            avg = avg + value;
+            thread::sleep(Duration::from_secs(1));
+            println!("{} value: {}", thread::current().name().unwrap(), avg);
         }
 
         println!("summary {:?}", params);

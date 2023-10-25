@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 
-use std::fmt::format;
 use std::sync::{Arc, Barrier};
 use std::thread;
 use std::thread::{Builder, current, JoinHandle};

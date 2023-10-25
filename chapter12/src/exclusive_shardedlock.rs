@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::ops::Div;
 use std::sync::Arc;
 use crossbeam::channel::{bounded, Receiver, Sender};

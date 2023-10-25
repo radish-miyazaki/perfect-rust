@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub fn enter_station() -> String {
     println!("Enter station name: ");
     let mut input = String::new();

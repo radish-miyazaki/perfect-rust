@@ -6,5 +6,11 @@ mod station;
 mod exclusive_mutex;
 mod exclusive_rwlock;
 mod exclusive_shardedlock;
+mod asynchronous;
+mod customer;
+mod client;
+mod writer;
+mod controller;
 
-fn main() {}
+#[async_std::main]
+async fn main() {}

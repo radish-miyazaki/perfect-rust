@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::ops::Div;
 use std::sync::mpsc::{Receiver, Sender};
 use std::sync::{Arc, mpsc, RwLock};

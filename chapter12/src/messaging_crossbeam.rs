@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crossbeam::channel::{bounded, Receiver, Sender};
 use crossbeam::thread;
 
